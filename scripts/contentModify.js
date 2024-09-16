@@ -1,3 +1,38 @@
+// Toggle Extension Button
+let toggleExtensionButton = document.createElement("a");
+toggleExtensionButton.className = "toggleText";
+toggleExtensionButton.text = "Enable Extension";
+toggleExtensionButton.style.textDecoration = "none";
+toggleExtensionButton.id = "ToggleTextButton";
+
+var enabledExtension = localStorage.getItem("rateMyAcornEnabled");
+if(enabledExtension === null){
+    enabledExtension = "true";
+    localStorage.setItem("rateMyAcornEnabled", enabledExtension);
+}
+
+toggleExtensionButton.addEventListener('click', function () {
+    if(enabledExtension === "true"){
+        enabledExtension = "false";
+    }else{
+        enabledExtension = "true";
+    }
+    localStorage.setItem("rateMyAcornEnabled", enabledExtension);
+    updateExtensionToggle();
+});
+
+
+function updateExtensionToggle(){
+    let temp = document.getElementById("ToggleTextButton");
+    if(enabledExtension === "true"){
+        temp.style.backgroundColor = "#f52525";
+        temp.textContent = "Disable Extension";
+    }else{
+        temp.style.backgroundColor = "#32a852";
+        temp.textContent = "Enable Extension";
+    }
+}
+
 // Check what happens when you go from another part of Acorn to the courses page
 window.addEventListener('popstate', function (event) {
 	let a = window.location;
@@ -39,7 +74,15 @@ let content = [];
 
 // Create a button next to the enrollment cart
 function buildButton(){
+    waitForElm('[aria-label="View your timetable"]').then((elm) => {
+        document.querySelector('[aria-label="View your timetable"]')
+        .insertAdjacentElement('afterend', toggleExtensionButton);
+        updateExtensionToggle();
+    });
     waitForElm('div.instructorDetails').then((elm) => {
+        if(enabledExtension === "false"){
+            return;
+        }
         // Add review sections
         let elements = document.querySelectorAll(".courseBox");
         for(let i = 0;i < elements.length;i++){

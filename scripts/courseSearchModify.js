@@ -14,6 +14,9 @@ function sleep(ms) {
 }
 
 var observer = new MutationObserver(function (event) {
+    if(enabledExtension === "false"){
+        return;
+    }
     if(event[0].target.className == "modal-open"){
         waitForElm('td.instructor[data-ng-class] div.instructorDetails').then((elm) => {
             watchbody.querySelector("h2.modal-title").insertAdjacentElement('beforebegin', enableButton)
