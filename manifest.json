@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "Rate My Acorn",
+    "description": "Displays Uoft professors rate my prof information into Acorn directly",
+    "permissions": ["activeTab"],
+    "version": "1.0",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": "images/hello_extensions.png"
+    },
+    "background": {
+        "service_worker": "scripts/background.js"
+    },
+    "content_scripts":[
+        {
+            "js": ["scripts/contentModify.js",
+                "scripts/courseSearchModify.js"],
+            "css": [ "scripts/contentModify.css"],
+            "matches": [
+                "https://acorn.utoronto.ca/*",
+                "https://www.ratemyprofessors.com/*"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "images/icon-16.png",
+        "32": "images/icon-32.png",
+        "48": "images/icon-48.png",
+        "128": "images/icon-128.png"
+    }
+}

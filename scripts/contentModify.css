@@ -1,0 +1,53 @@
+.ratingContent{
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+}
+
+a.inspectText{
+    color: #fff;
+    background-color: #00285D;
+    font-size: 14px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: normal;
+    display: inline-block;
+    float: right;
+    position: relative;
+    box-sizing: border-box;
+    margin-right: 30px;
+}
+
+a.inspectText:hover{
+    color: #fff;
+    background-color: #003882;
+}
+
+
+/* Rating Circle */
+div.ratingcircle {
+    display: flex;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background: conic-gradient(
+        yellow var(--progress), 
+        green var(--progress),
+        red var(--progress),
+        gray 0deg
+      );
+    font-size: 0;
+  }
+  
+  div.ratingcircle::after {
+    content: attr(data-progress);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 15px;
+    border-radius: 50%;
+    background: white;
+    font-size: 2rem;
+    text-align: center;
+  }
