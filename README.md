@@ -11,3 +11,5 @@ Features:
 
 RateMyTracks is not endorsed or sponsored by the University of Toronto or Rate My Professors.
 Developed by Qi Wen (Kevin) Wei.
+
+You can view it on https://chromewebstore.google.com/detail/rate-my-acorn/jiheeojkppjeojgmnjiicgemlgjlcgkl?authuser=0&hl=en
