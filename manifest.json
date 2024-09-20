@@ -2,7 +2,6 @@
     "manifest_version": 3,
     "name": "Rate My Acorn",
     "description": "Displays Uoft professors rate my prof information into Acorn directly",
-    "permissions": ["activeTab"],
     "version": "1.0",
     "action": {
       "default_popup": "index.html",
@@ -14,7 +13,9 @@
     "content_scripts":[
         {
             "js": ["scripts/contentModify.js",
-                "scripts/courseSearchModify.js"],
+                "scripts/courseSearchModify.js",
+                "scripts/elementCreation.js",
+                "scripts/generalizedFunctions.js"],
             "css": [ "scripts/contentModify.css"],
             "matches": [
                 "https://acorn.utoronto.ca/*",
